@@ -1,0 +1,109 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="character-container">
+    <div class="character-content">
+    <div class="top-row">
+        <div class="name-details-container">
+            <h1>Jester Lavorre</h1>
+            <p class="character-details">Tiefling Cleric Trickster Domain 13</p>
+        </div>
+    </div>
+    <div class="second-row">
+        <div class="avatar-container">
+            <img class="avatar" src="@Url.Content("/Assets/tiefling-cleric.jpg")" alt="Character Avatar">
+        </div>
+        <div class="stats-container">
+            <div class="stat">
+                <p class="stat-value">18</p>
+                <p class="stat-label">AC</p>
+            </div>
+            <div class="stat">
+                <p class="stat-value">30</p>
+                <p class="stat-label">Speed</p>
+            </div>
+            <div class="stat">
+                <p class="stat-value">+6</p>
+                <p class="stat-label">Prof</p>
+            </div>
+            <div class="stat">
+                <p class="stat-value">+3</p>
+                <p class="stat-label">Initiative</p>
+            </div>
+        </div>
+    </div>
+   <div class="health-slider-container">
+       <input class="health-slider" type="range" min="0" max="100" value="90"/>
+       <img class="health-icon"  src="@Url.Content("Assets/heart.png")"/> 
+       <p class="health-text">50/100</p>
+   </div>
+
+    <div class="input-squares-container">
+        <div class="input-square">
+            <input type="number" id="str" name="str" min="1" max="20">
+            <label for="str">Str</label>
+        </div>
+        <div class="input-square">
+            <input type="number" id="dex" name="dex" min="1" max="20">
+            <label for="dex">Dex</label>
+        </div>
+        <div class="input-square">
+            <input type="number" id="con" name="con" min="1" max="20">
+            <label for="con">Con</label>
+        </div>
+        <div class="input-square">
+            <input type="number" id="int" name="int" min="1" max="20">
+            <label for="int">Int</label>
+        </div>
+        <div class="input-square">
+            <input type="number" id="wis" name="wis" min="1" max="20">
+            <label for="wis">Wis</label>
+        </div>
+        <div class="input-square">
+            <input type="number" id="cha" name="cha" min="1" max="20">
+            <label for="cha">Cha</label>
+        </div>
+    </div>
+    <div class="skill-container">
+        <div class="sixth-row">
+            <div class="third">
+                <img class="icon" src="@Url.Content("Assets/heart.png")"></img>
+            </div>
+            <div class="third">
+                <img class="icon" src="@Url.Content("Assets/heart.png")"></img>
+            </div>
+            <div class="third">
+                <img class="icon" src="@Url.Content("Assets/heart.png")"></img>
+            </div>
+        </div>
+    @for (int i = 0; i < 5; i++)
+    {
+            <div class="item-row">
+                <div class="checkbox">
+                    <input type="checkbox" id="skill1" name="skill1" class="skill-checkbox-input">
+                    <label for="skill1"></label>
+                </div>
+                <div class="skill-name">
+                    <p>Acrobatics</p>
+                </div>
+                <div class="skill-abbr">
+                    <p>DEX</p>
+                </div>
+                <div class="skill-bonus">
+                    <input type="number" id="skill1-bonus" name="skill1-bonus" value="0" min="-999" max="999" step="1">
+                </div>
+            </div>
+        }
+    
+        </div>
+    </div>
+
+   
+
+
+   
+
+
+</div>

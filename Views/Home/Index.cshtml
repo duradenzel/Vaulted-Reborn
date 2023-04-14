@@ -1,0 +1,62 @@
+﻿<div class="menu-wrapper">
+		@*<div class="toggle-menu" onclick="toggleMenu()"><i class='bx bx-plus' ></i></div>*@
+	<img  id="logo" onclick="toggleMenu()" src="@Url.Content("/Assets/Vaultednewsmall.png")" />
+
+		<ul class="menu">
+			<li style="--i: 1;">
+			<a asp-area="" asp-controller="CharacterSheet" asp-action="CharacterSheet">
+					<i class="fa-sharp fa-solid fa-pen-to-square"></i>
+				<p class="icon-label">Character Sheet</p>
+
+				</a>
+			</li>
+			<li style="--i: 2;">
+				<a href="#">
+					<i class='fa-solid fa-user' ></i>
+				<p class="icon-label">Account</p>
+
+				</a>
+			</li>
+			<li style="--i: 3;">
+			<a asp-area="" asp-controller="Character" asp-action="Index">
+				<i class="fa-sharp fa-solid fa-pen-to-square"></i>
+				<p class="icon-label">Character</p>
+
+			</a>
+			</li>
+			<li style="--i: 4;">
+				<a href="#">
+					<i class='bx bxs-doughnut-chart' ></i>
+				</a>
+			</li>
+			<li style="--i: 5;">
+				<a href="#">
+					<i class='bx bxs-message-dots' ></i>
+				</a>
+			</li>
+			<li style="--i: 6;">
+			<a asp-area="" asp-controller="Spell" asp-action="Index">
+				<i class="fa-solid fa-wand-magic-sparkles"></i>
+				<p class="icon-label">Spells</p>
+
+			</a>
+			</li>
+		</ul>
+	</div>
+
+
+
+
+@section scripts {
+        <script>
+		function toggleMenu() {
+			document.querySelector('.menu-wrapper').classList.toggle('active');
+		}
+        </script>
+}
+
+
+
+    
+
+

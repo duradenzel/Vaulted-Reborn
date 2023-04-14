@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="bg-cover"></div>
+
+<div class="login-wrapper">
+    <section class="login-section">
+        <div class="form-box">
+            <div class="form-value">
+
+                <form action="@Url.Action("Register", "Player")" method="post">
+                    @*<img id="login-logo" src="@Url.Content("/Assets/Vaultednew.png")" />*@
+
+
+                    <div class="inputbox">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+
+                    <button class="login">Create Account</button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+

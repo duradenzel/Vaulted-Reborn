@@ -1,0 +1,17 @@
+﻿
+
+  <ul id="data" class="list-group list-group-flush spell-list">
+            @foreach (var spell in Model.results)
+            {
+                <li>             
+                    <img class="spell-school-icon" src="@Url.Content("/Assets/spellschools/"+@spell.school+".png")">
+
+                    <p>@spell.name</p>
+                    <p>@spell.level.Split("-")[0] &nbsp</p>
+                    <p>@spell.school</p>
+                    <p>@spell.components</p>
+                    <p>@spell.casting_time</p>
+                    <p>@spell.range</p>
+                </li>
+            }
+   </ul>

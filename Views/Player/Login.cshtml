@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Login Page";
+}
+<div class="bg-cover"></div>
+<section class="login-section">
+    <div class="form-box">
+        <div class="form-value">
+
+            <form action="@Url.Action("Login", "Player")" method="post">
+
+                @*<img id="login-logo" src="@Url.Content("/Assets/Vaultednew.png")" />*@
+
+
+
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+                <div class="inputbox">
+                    <input type="email" name="email" placeholder="Email" required>
+
+                </div>
+                <div class="inputbox">
+                    <input type="password" name="password" placeholder="Password" required>
+
+                </div>
+                <div class="forget">
+                    <label for=""><input type="checkbox" name="remember" value="True">Remember Me</label>
+
+                </div>
+
+                <button class="login">Log in</button>
+                <div class="register">
+
+                    <p><a href="#">Forgot Password?</a></p>
+                    <p>Don't have a account <a href="@Url.Action("RegisterPage", "Player")">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
