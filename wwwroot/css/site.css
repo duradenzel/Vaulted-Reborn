@@ -1251,15 +1251,16 @@ h2 {
 /*Character Viewer(Character.cshtml)*/
 
 
-.character-container{
+.character-container {
     max-width: 800px;
     margin: 0 auto;
-
+    padding: .5rem;
 }
 
 .character-content{
     margin: 0 auto;
     width: 85%;
+    
 }
 
 .top-row {
@@ -1268,6 +1269,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+
 }
 
 .name-details-container {
@@ -1317,7 +1319,7 @@ h2 {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 5rem;
+    
     
 }
 
@@ -1336,11 +1338,11 @@ h2 {
 
 
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
     .stat {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 0.8rem;
+        width: 3.5rem;
+        height: 3.5rem;
+   
     }
 
     
@@ -1382,6 +1384,7 @@ h2 {
     -webkit-transition: .2s;
     transition: opacity .2s;
     margin-top: 1rem;
+    
 }
 
 .health-slider-container{

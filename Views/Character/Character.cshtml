@@ -21,7 +21,7 @@
                 <p class="stat-label">Speed</p>
             </div>
             <div class="stat">
-                <p class="stat-value">+2</p>
+                <p class="stat-value">+@Model.ProficiencyBonus</p>
                 <p class="stat-label">Prof</p>
             </div>
             <div class="stat">
@@ -31,9 +31,9 @@
         </div>
     </div>
    <div class="health-slider-container">
-       <input class="health-slider" type="range" min="0" max="100" value="90"/>
+       <input class="health-slider" type="range" min="0" max="@Model.MaxHP" value="@Model.HP" disabled/>
        <img class="health-icon"  src="@Url.Content("Assets/heart.png")"/> 
-       <p class="health-text">50/100</p>
+       <p class="health-text">@Model.HP/@Model.MaxHP</p>
    </div>
 
     <div class="input-squares-container">
