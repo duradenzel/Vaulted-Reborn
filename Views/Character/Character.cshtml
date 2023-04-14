@@ -1,14 +1,10 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 <div class="character-container">
     <div class="character-content">
     <div class="top-row">
         <div class="name-details-container">
-            <h1>Jester Lavorre</h1>
-            <p class="character-details">Tiefling Cleric Trickster Domain 13</p>
+            <h1>@Model.Name</h1>
+            <p class="character-details">@Model.Race @Model.Subclass @Model.Class, Level @Model.Level</p>
         </div>
     </div>
     <div class="second-row">
@@ -17,19 +13,19 @@
         </div>
         <div class="stats-container">
             <div class="stat">
-                <p class="stat-value">18</p>
+                <p class="stat-value">@Model.AC</p>
                 <p class="stat-label">AC</p>
             </div>
             <div class="stat">
-                <p class="stat-value">30</p>
+                <p class="stat-value">@Model.Speed</p>
                 <p class="stat-label">Speed</p>
             </div>
             <div class="stat">
-                <p class="stat-value">+6</p>
+                <p class="stat-value">+2</p>
                 <p class="stat-label">Prof</p>
             </div>
             <div class="stat">
-                <p class="stat-value">+3</p>
+                <p class="stat-value">@Model.Dexterity</p>
                 <p class="stat-label">Initiative</p>
             </div>
         </div>
@@ -42,40 +38,40 @@
 
     <div class="input-squares-container">
         <div class="input-square">
-            <input type="number" id="str" name="str" min="1" max="20">
+            <input type="number" id="str" name="str" min="1" max="20" value="@Model.Strength">
             <label for="str">Str</label>
         </div>
         <div class="input-square">
-            <input type="number" id="dex" name="dex" min="1" max="20">
+            <input type="number" id="dex" name="dex" min="1" max="20" value="@Model.Dexterity">
             <label for="dex">Dex</label>
         </div>
         <div class="input-square">
-            <input type="number" id="con" name="con" min="1" max="20">
+            <input type="number" id="con" name="con" min="1" max="20" value="@Model.Constitution">
             <label for="con">Con</label>
         </div>
         <div class="input-square">
-            <input type="number" id="int" name="int" min="1" max="20">
+            <input type="number" id="int" name="int" min="1" max="20" value="@Model.Intelligence">
             <label for="int">Int</label>
         </div>
         <div class="input-square">
-            <input type="number" id="wis" name="wis" min="1" max="20">
+                <input type="number" id="wis" name="wis" min="1" max="20" value="@Model.Wisdom">
             <label for="wis">Wis</label>
         </div>
         <div class="input-square">
-            <input type="number" id="cha" name="cha" min="1" max="20">
+                <input type="number" id="cha" name="cha" min="1" max="20" value="@Model.Charisma">
             <label for="cha">Cha</label>
         </div>
     </div>
     <div class="skill-container">
         <div class="sixth-row">
-            <div class="third">
-                <img class="icon" src="@Url.Content("Assets/heart.png")"></img>
+            <div class="third underline">
+                    <i class="fa-solid fa-person-running char-ul-icon"></i>
             </div>
             <div class="third">
-                <img class="icon" src="@Url.Content("Assets/heart.png")"></img>
+                <i class="fa-solid fa-wand-magic char-ul-icon"></i>
             </div>
             <div class="third">
-                <img class="icon" src="@Url.Content("Assets/heart.png")"></img>
+                <i class="fa-solid fa-shield-halved char-ul-icon"></i>
             </div>
         </div>
     @for (int i = 0; i < 5; i++)
@@ -101,7 +97,17 @@
     </div>
 
    
+    @section scripts{
+        <script>
+            const thirdDivs = document.querySelectorAll('.third');
 
+            document.querySelectorAll('.char-ul-icon').forEach(e => e.addEventListener('click', () => {
+                thirdDivs.forEach(div => div.classList.remove('underline'));
+                e.parentNode.classList.add('underline');
+                console.log("hit");
+            }))
+        </script>
+    }
 
    
 

@@ -2,6 +2,7 @@
 using System.Security.Cryptography.X509Certificates;
 using VaultedBLL;
 using VaultedDAL;
+using VaultedDAL.NewFolder;
 
 namespace Vaulted_Reborn.Controllers
 {
@@ -14,9 +15,11 @@ namespace Vaulted_Reborn.Controllers
 			_characterService = new CharacterService( new CharacterDAO());
 		}
 
-		public IActionResult Index()
-		{
-			return View("Character");
-		}
+		public IActionResult Index() {
+            CharacterDTO character = _characterService.GetCharacter(1);
+
+            return View("Character", character); }
+
+		
 	}
 }

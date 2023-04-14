@@ -1405,7 +1405,7 @@ input[type='range'] {
     overflow: hidden;
     width: 100%;
     -webkit-appearance: none;
-    background-color: #c02a2a;
+    background-color: red;
     border-radius: 5px;
 }
 
@@ -1419,7 +1419,7 @@ input[type='range'] {
         width: 10px;
         -webkit-appearance: none;
         height: 10px;
-        background-color: #c02a2a;
+        background-color: red;
         box-shadow: 1000px 0 0 1000px #fff;
     }
 
@@ -1570,13 +1570,25 @@ input::-webkit-inner-spin-button {
 
     .sixth-row .third {
         width: 30%;
-        border-bottom: .15rem solid #eee;
         text-align: center;
+        
     }
 
-    .sixth-row .icon {
+    .sixth-row .char-ul-icon {
         display: inline-block;
         width: 2.5rem;
         height: 2.5rem;
         margin-bottom: 10px;
+        font-size: 26px;
+        cursor: pointer;
     }
+
+.underline {
+    border-bottom: .15rem solid #eee;
+}
+
+
+
+    
+
+   
