@@ -1271,6 +1271,14 @@ h2 {
     margin-bottom: 1rem;
 
 }
+    .top-row > a:nth-child(2) {
+        margin-left: auto;
+        margin-right: 2rem;
+    }
+.top-icons {
+    color: #fff;
+    font-size: 1.5rem;
+}
 
 .name-details-container {
     display: flex;
@@ -1281,11 +1289,16 @@ h2 {
 
 
 .character-details {
+    display: flex;
     font-size: 0.8rem;
     margin-top: 0.2rem;
+    margin-left: 0.5rem;
     color: #666;
     color: #ccc;
+
 }
+
+
 
 
 .second-row {
@@ -1345,7 +1358,9 @@ h2 {
    
     }
 
-    
+    #char-select{
+        font-size: 32px !important;
+    }
 
     .avatar-container {
         min-width: 4rem;
@@ -1428,6 +1443,7 @@ input[type='range'] {
 
 .health-text{
     color: #fff;
+    display: flex;
 }
 
 
@@ -1591,7 +1607,342 @@ input::-webkit-inner-spin-button {
 }
 
 
-
-    
-
+#char-select {
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    background-color: transparent;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 500;
    
+ 
+}
+
+    #char-select:focus {
+        background-color: #151D28;
+        color: #fff;
+    }
+
+
+
+
+.creator-container {
+    max-width: 600px;
+    height: 90vh;
+   
+    margin: 0 auto;
+}
+
+
+
+
+
+.creator-form {
+    text-align: center; 
+    width: 100%;
+    height: 90vh;
+    margin-top: 30px;
+    color: lightgray;
+}
+
+    .creator-form fieldset {
+        border: 0 none;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+    }
+
+.form-card {
+    text-align: left
+}
+
+.creator-form fieldset:not(:first-of-type) {
+    display: none
+}
+
+
+
+.creator-form input,
+.creator-form textarea {
+    padding: 4px 7.5px 4px 7.5px;
+   border: none;
+   outline: none;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    box-sizing: border-box;
+    color: lightgray;
+    background-color: transparent;
+    font-size: 16px;
+    border-bottom: 1px solid lightgray;
+   
+}
+
+
+.creator-form input[type=number]{
+    border-bottom: 1px solid lightgray;
+    text-align: center;
+}
+
+    .creator-form select {
+        background-color: transparent;
+        color: lightgray;
+        border: none;
+    }
+
+
+
+    .creator-form input:focus,
+    .creator-form textarea:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid #673AB7;
+        outline-width: 0
+    }
+
+.creator-form .action-button-previous {
+    width: 100px;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right;
+}
+
+    .creator-form .action-button-previous:hover,
+    .creator-form .action-button-previous:focus {
+        color: lightgray;
+    }
+
+
+.creator-form .action-button {
+    width: 100px;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right;
+}
+
+    .creator-form .action-button:hover,
+    .creator-form .action-button:focus {
+        color: lightgray;
+    }
+
+
+.card {
+    z-index: 0;
+    border: none;
+    position: relative
+}
+
+.fieldset-title {
+    font-size: 25px;
+    color: slateblue;
+    margin-bottom: 15px;
+    font-weight: normal;
+    text-align: center;
+
+}
+
+
+
+
+#progressbar {
+
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+    width: 100%;
+    padding: 0;
+}
+
+    #progressbar .active {
+        color: slateblue;
+    }
+
+    #progressbar li {
+        list-style-type: none;
+        font-size: 15px;
+        width: 33.3%;
+        float: left;
+        position: relative;
+        font-weight: 400
+    }
+
+    #progressbar #basics:before {
+        font-family: FontAwesome;
+        content: "1"
+    }
+
+    #progressbar #skills:before {
+        font-family: FontAwesome;
+        content: "2"
+    }
+
+    #progressbar #equipment:before {
+        font-family: FontAwesome;
+        content: "3"
+    }
+
+  
+
+    #progressbar li:before {
+        width: 50px;
+        height: 50px;
+        line-height: 45px;
+        display: block;
+        font-size: 20px;
+        color: #ffffff;
+        background: lightgray;
+        border-radius: 50%;
+        margin: 0 auto 10px auto;
+        padding: 2px;
+
+        
+    }
+
+    #progressbar li:after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: lightgray;
+        position: absolute;
+        left: 0;
+        top: 25px;
+        z-index: -1
+    }
+
+    #progressbar li.active:before,
+    #progressbar li.active:after {
+        background: slateblue
+    }
+
+    .cr-health{
+        color: lightgray;
+        margin-top: 50px;
+    }
+
+    .cr-hp-labels{
+        color: slateblue;
+        cursor: pointer;
+        margin: 0px 15px;
+       
+    }
+
+        .cr-hp-labels:hover {
+            color: lavender;
+        }
+
+.creator-form .cr-content {
+    margin-left: 50px;
+    height: 65vh;
+    max-height: 65vh;
+}
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    color: #fff;
+}
+
+    .flex-container > .item {
+        width: calc(33.33% - 10px);
+        margin-bottom: 30px;
+        padding: 0px 15px;
+        height: 30px;
+    }
+
+        .flex-container > .item:nth-child(2) {
+            border-right: 1px solid #fff;
+            border-left: 1px solid #fff;
+        }
+        .flex-container > .item:nth-child(5) {
+            border-right: 1px solid #fff;
+            border-left: 1px solid #fff;
+        }
+
+    .flex-container > label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .flex-container > input {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+
+
+
+    .cr-skills > li > input[type=checkbox]{
+
+        height: 20px;
+        width: 20px;
+        border-radius: 10px;
+        margin-right: 30px;
+        
+    }
+
+        .cr-skills > li {
+            font-size: 20px;
+            list-style: none;
+        }
+
+.cr-comment{
+    color: gray;
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
+
+.clist-card {
+    color: #eee;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clist-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: slateblue;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.clist-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+}
+
+.clist-info > row {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,33 @@
+﻿
+
+<div class="character-container">
+    <div class="character-content">
+        <h2>Characters</h2>
+        <ul>
+            @foreach (var character in @Model)
+            {
+                <li>
+                    <div class="clist-card">
+                        <div class="clist-avatar">R</div>
+                        <div class="clist-info">
+                            <div class="row">@character.Name</div>
+                            <div class="row">@character.Class @character.Level</div>
+                        </div>
+                    </div>
+
+                </li>
+            }
+           
+        </ul>
+    </div>
+</div>
+
+
+    @section scripts{
+        <script>
+           
+        </script>
+    }
+
+
+    </div>

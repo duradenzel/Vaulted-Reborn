@@ -1,11 +1,27 @@
 ﻿
+
 <div class="character-container">
     <div class="character-content">
     <div class="top-row">
         <div class="name-details-container">
-            <h1>@Model.Name</h1>
-            <p class="character-details">@Model.Race @Model.Subclass @Model.Class, Level @Model.Level</p>
+
+                <select id="char-select" onchange="UpdateCharacter(this)">
+                @foreach( var character in @Model.CharacterNames){
+                        <option value="@character.Id">@character.Name</option>
+
+                }   
+                </select>
+                <div class="character-details">
+                    <p class="race" contenteditable="true">@Model.Character.Race </p>
+                    <p class="subclass" contenteditable="true">@Model.Character.Subclass </p>
+                    <p class="class" contenteditable="true"> @Model.Character.Class </p>, Level
+                    <p class="level" contenteditable="true">@Model.Character.Level</p>
+                </div>
         </div>
+            <a href="#" onclick="SaveChanges()"><i class="fa-regular fa-save top-icons"></i></a>
+            <a href="#"><i class="fa-regular fa-trash-can top-icons"></i></a>
+
+
     </div>
     <div class="second-row">
         <div class="avatar-container">
@@ -13,52 +29,52 @@
         </div>
         <div class="stats-container">
             <div class="stat">
-                <p class="stat-value">@Model.AC</p>
+                    <p class="stat-value" >@Model.Character.AC</p>
                 <p class="stat-label">AC</p>
             </div>
             <div class="stat">
-                <p class="stat-value">@Model.Speed</p>
+                    <p class="stat-value">@Model.Character.Speed</p>
                 <p class="stat-label">Speed</p>
             </div>
             <div class="stat">
-                <p class="stat-value">+@Model.ProficiencyBonus</p>
+                    <p class="stat-value">+@Model.Character.ProficiencyBonus</p>
                 <p class="stat-label">Prof</p>
             </div>
             <div class="stat">
-                <p class="stat-value">@Model.Dexterity</p>
+                    <p class="stat-value">@((Model.Character.Dexterity) - 10 >> 1)</p>
                 <p class="stat-label">Initiative</p>
             </div>
         </div>
     </div>
    <div class="health-slider-container">
-       <input class="health-slider" type="range" min="0" max="@Model.MaxHP" value="@Model.HP" disabled/>
-       <img class="health-icon"  src="@Url.Content("Assets/heart.png")"/> 
-       <p class="health-text">@Model.HP/@Model.MaxHP</p>
+            <input class="health-slider" type="range" min="0" max="@Model.Character.MaxHP" value="@Model.Character.HP" disabled />
+       <img class="health-icon"  src="@Url.Content("Assets/heart.png")"/>
+            <div class="health-text"><p class="hp" contenteditable="true">@Model.Character.HP</p>/<p class="maxhp" contenteditable="true">@Model.Character.MaxHP</p></div>
    </div>
 
     <div class="input-squares-container">
         <div class="input-square">
-            <input type="number" id="str" name="str" min="1" max="20" value="@Model.Strength">
+                <input type="number" class="abilityscore" id="str" name="str" min="1" max="20" value="@Model.Character.Strength">
             <label for="str">Str</label>
         </div>
         <div class="input-square">
-            <input type="number" id="dex" name="dex" min="1" max="20" value="@Model.Dexterity">
+                <input type="number" class="abilityscore" id="dex" name="dex" min="1" max="20" value="@Model.Character.Dexterity">
             <label for="dex">Dex</label>
         </div>
         <div class="input-square">
-            <input type="number" id="con" name="con" min="1" max="20" value="@Model.Constitution">
+                <input type="number" class="abilityscore"  id="con" name="con" min="1" max="20" value="@Model.Character.Constitution">
             <label for="con">Con</label>
         </div>
         <div class="input-square">
-            <input type="number" id="int" name="int" min="1" max="20" value="@Model.Intelligence">
+                <input type="number" class="abilityscore"  id="int" name="int" min="1" max="20" value="@Model.Character.Intelligence">
             <label for="int">Int</label>
         </div>
         <div class="input-square">
-                <input type="number" id="wis" name="wis" min="1" max="20" value="@Model.Wisdom">
+                <input type="number" class="abilityscore"  id="wis" name="wis" min="1" max="20" value="@Model.Character.Wisdom">
             <label for="wis">Wis</label>
         </div>
         <div class="input-square">
-                <input type="number" id="cha" name="cha" min="1" max="20" value="@Model.Charisma">
+                <input type="number" class="abilityscore"  id="cha" name="cha" min="1" max="20" value="@Model.Character.Charisma">
             <label for="cha">Cha</label>
         </div>
     </div>
@@ -106,10 +122,83 @@
                 e.parentNode.classList.add('underline');
                 console.log("hit");
             }))
+
+
+            function UpdateCharacter(select){
+                console.log("arrived at function");
+
+                $.ajax({
+                    url: '/Character/LoadCharacter',
+                    data: { id: select.value },
+                    type: 'GET',
+                    success: function (e) {
+                        console.log(e);
+                        document.querySelector(".race") = e.race;
+                        document.querySelector(".subclass") = e.subclass;
+                        document.querySelector(".class") = e.class;
+                        document.querySelector(".level") = e.level;
+
+                        var charhp = document.querySelector(".health-slider");
+                        charhp.max = e.maxHP;
+                        charhp.value = e.hp;
+                        document.querySelector(".health-text").textContent = e.hp + "/" +e.maxHP
+                        var stats = document.querySelectorAll(".stat-value");
+                        stats[0].textContent = e.ac;
+                        stats[1].textContent = e.speed;
+                        stats[2].textContent = "+" + e.proficiencyBonus;
+                        stats[3].textContent = "+" + (e.dexterity - 10) >> 1;
+                        var as = document.querySelectorAll(".abilityscore");
+                        as[0].value = e.strength;
+                        as[1].value = e.dexterity;
+                        as[2].value = e.constitution;
+                        as[3].value = e.intelligence;
+                        as[4].value = e.wisdom;
+                        as[5].value = e.charisma;
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                });
+            }
+
+            function SaveChanges() {
+                var select = document.querySelector("#char-select")
+                var character = {
+                    id: select.value,
+                    race: document.querySelector(".race").textContent.trim(),
+                    subclass: document.querySelector(".subclass").textContent.trim(),
+                    class: document.querySelector(".class").textContent.trim(),
+                    level: document.querySelector(".level").textContent.trim(),
+                    maxHP: document.querySelector(".maxhp").textContent.trim(),
+                    hp: document.querySelector(".hp").textContent.trim(),
+                    ac: document.querySelectorAll(".stat-value")[0].textContent.trim(),
+                    speed: document.querySelectorAll(".stat-value")[1].textContent.trim(),
+                    strength: document.querySelectorAll(".abilityscore")[0].value,
+                    dexterity: document.querySelectorAll(".abilityscore")[1].value,
+                    constitution: document.querySelectorAll(".abilityscore")[2].value,
+                    intelligence: document.querySelectorAll(".abilityscore")[3].value,
+                    wisdom: document.querySelectorAll(".abilityscore")[4].value,
+                    charisma: document.querySelectorAll(".abilityscore")[5].value
+                };
+
+                console.log(character);
+
+                $.ajax({
+                    url: '/Character/SaveChanges',
+                    data: JSON.stringify(character),
+                    type: 'POST',
+                    contentType: 'application/json',
+                    success: function (response) {
+                        UpdateCharacter(select);
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+            }
+
         </script>
     }
 
    
-
-
 </div>
