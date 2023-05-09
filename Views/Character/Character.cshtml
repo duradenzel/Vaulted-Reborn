@@ -115,6 +115,8 @@
    
     @section scripts{
         <script>
+            document.getElementById('char-select').value = @Model.Character.Id;
+            
             const thirdDivs = document.querySelectorAll('.third');
 
             document.querySelectorAll('.char-ul-icon').forEach(e => e.addEventListener('click', () => {
@@ -125,6 +127,7 @@
 
 
             function UpdateCharacter(select){
+                
                 console.log("arrived at function");
 
                 $.ajax({
@@ -133,10 +136,10 @@
                     type: 'GET',
                     success: function (e) {
                         console.log(e);
-                        document.querySelector(".race") = e.race;
-                        document.querySelector(".subclass") = e.subclass;
-                        document.querySelector(".class") = e.class;
-                        document.querySelector(".level") = e.level;
+                        document.querySelector(".race").textContent = e.race;
+                        document.querySelector(".subclass").textContent = e.subclass;
+                        document.querySelector(".class").textContent = e.class;
+                        document.querySelector(".level").textContent = e.level;
 
                         var charhp = document.querySelector(".health-slider");
                         charhp.max = e.maxHP;

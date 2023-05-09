@@ -1917,9 +1917,13 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     padding: 10px;
-
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+    .clist-card:hover {
+        cursor: pointer;
+        background-color: #212F42
+    }
 
 .clist-avatar {
     display: flex;

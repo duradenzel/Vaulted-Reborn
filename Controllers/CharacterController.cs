@@ -19,9 +19,9 @@ namespace Vaulted_Reborn.Controllers
 			_characterService = new CharacterService();
 		}
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            CharacterModel character = await _characterService.GetCharacter(1);
+            CharacterModel character = await _characterService.GetCharacter(id != 0 ? id : 1);
 			List<CharacterDropdownItemsModel> charnames = await _characterService.GetCharacterNames(1);
 
 			var viewModel = new CharacterViewModel(charnames, character);
