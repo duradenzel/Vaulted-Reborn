@@ -79,6 +79,14 @@ namespace Vaulted_Reborn.Controllers
             return Ok(character);
         }
 
+        public async Task<IActionResult> DeleteCharacter(int id)
+        {
+            await _characterService.DeleteCharacter(id);
+
+            return Ok();
+
+        }
+
 
 
     }

@@ -5,7 +5,7 @@
     <div class="top-row">
         <div class="name-details-container">
 
-                <select id="char-select" onchange="UpdateCharacter(this)">
+                <select id="char-select" onchange="UpdateCharacter(this.value)">
                 @foreach( var character in @Model.CharacterNames){
                         <option value="@character.Id">@character.Name</option>
 
@@ -18,8 +18,8 @@
                     <p class="level" contenteditable="true">@Model.Character.Level</p>
                 </div>
         </div>
-            <a href="#" onclick="SaveChanges()"><i class="fa-regular fa-save top-icons"></i></a>
-            <a href="#"><i class="fa-regular fa-trash-can top-icons"></i></a>
+            <a onclick="SaveChanges()"><i class="fa-regular fa-save top-icons"></i></a>
+            <a onclick="DeleteCharacter()"><i class="fa-regular fa-trash-can top-icons"></i></a>
 
 
     </div>
@@ -126,13 +126,13 @@
             }))
 
 
-            function UpdateCharacter(select){
+            function UpdateCharacter(id){
                 
                 console.log("arrived at function");
 
                 $.ajax({
                     url: '/Character/LoadCharacter',
-                    data: { id: select.value },
+                    data: { id: id },
                     type: 'GET',
                     success: function (e) {
                         console.log(e);
@@ -160,6 +160,23 @@
                     },
                     error: function (err) {
                         console.log(err)
+                    }
+                });
+            }
+
+            function DeleteCharacter(){
+                var select = document.querySelector("#char-select")
+
+                $.ajax({
+                    url: '/Character/DeleteCharacter',
+                    data: { id: select.value},
+                    type: 'POST',
+                    success: function () {
+                        UpdateCharacter(1)
+                        select.value = 1
+                    },
+                    error: function () {
+                        alert("An error occurred while deleting the character.");
                     }
                 });
             }
