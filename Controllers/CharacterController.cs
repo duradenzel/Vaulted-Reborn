@@ -21,22 +21,22 @@ namespace Vaulted_Reborn.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
-            CharacterModel character = await _characterService.GetCharacter(id != 0 ? id : 1);
-			List<CharacterDropdownItemsModel> charnames = await _characterService.GetCharacterNames(1);
+            Character character = await _characterService.GetCharacter(id != 0 ? id : 1);
+			List<CharacterDropdownItems> charnames = await _characterService.GetCharacterNames(1);
 
 			var viewModel = new CharacterViewModel(charnames, character);
 
             return View("Character", viewModel);
         }
 
-        public async Task<CharacterModel> LoadCharacter(int id)
+        public async Task<Character> LoadCharacter(int id)
         {
-            CharacterModel character = await _characterService.GetCharacter(id);
+            Character character = await _characterService.GetCharacter(id);
             return character;
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveChanges([FromBody] CharacterModel model)
+        public async Task<IActionResult> SaveChanges([FromBody] Character model)
         {
             var character = await _characterService.GetCharacter(model.Id);
 
@@ -67,12 +67,12 @@ namespace Vaulted_Reborn.Controllers
 
         public async Task<IActionResult> CharacterList()
         {
-            List<CharacterModel> characters = await _characterService.GetCharacters(1);
+            List<Character> characters = await _characterService.GetCharacters(1);
 
             return View("CharacterList", characters);
         }
 
-        public async Task<IActionResult> CreateCharacter(CharacterModel character)
+        public async Task<IActionResult> CreateCharacter(Character character)
         {
             await _characterService.CreateCharacter(character);
 
