@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Tls;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
@@ -21,7 +22,7 @@ namespace Vaulted_Reborn.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
-            Character character = await _characterService.GetCharacter(id != 0 ? id : 1);
+            Character character = await _characterService.GetCharacter(id != 0 ? id : 2);
 			List<CharacterDropdownItems> charnames = await _characterService.GetCharacterNames(1);
 
 			var viewModel = new CharacterViewModel(charnames, character);
@@ -32,7 +33,7 @@ namespace Vaulted_Reborn.Controllers
         public async Task<Character> LoadCharacter(int id)
         {
             Character character = await _characterService.GetCharacter(id);
-            return character;
+             return character;
         }
 
         [HttpPost]
@@ -76,7 +77,7 @@ namespace Vaulted_Reborn.Controllers
         {
             await _characterService.CreateCharacter(character);
 
-            return Ok(character);
+            return RedirectToAction("CharacterList");
         }
 
         public async Task<IActionResult> DeleteCharacter(int id)
